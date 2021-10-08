@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1> {{ titulo }} </h1>
+    </div>
+  </div>
+  <hr>
+  <form class="form-row">
+    <div class="form-group col-md-2">
+      <label for="apellido" >Descripción:</label>
+      <input type="text" class="form-control" name="descripcion" placeholder="Descripcion articulo" [(ngModel)]="desInput" id="desInput" >
+   </div>
+   <div class="form-group col-md-2">
+    <label for="apellido" >Precio:</label>
+    <input type="text" class="form-control" name="precio" placeholder="Precio articulo" [(ngModel)]="precioInput" id="precioInput" >
+ </div>
+ <hr>
+   <div class="col">
+     <button type="submit" class="btn btn-outline-primary" (click)="agregarArticulos()" *ngIf=btn_agregar >Agregar Articulo</button>
+     <button type="submit" class="btn btn-outline-primary"*ngIf=btn_modificar (click)="modificarArticulos()">Modificar Articulo</button>
+   </div>
+
+  </form>
+  <hr>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Borrar</th>
+        <th scope="col">Seleccionar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let articulo of articulos; let i=index">
+        <th scope="row">{{i+1}}</th>
+        <td>{{ articulo.descripcion }}</td>
+        <td>{{ articulo.precio}}</td>
+        <td><button type="button" class="btn btn-outline-danger" (click)="eliminarArticulos(i)">Borrar</button></td>
+        <td><button type="button" class="btn btn-outline-secondary"(click)="selecArticulos(i)">Seleccionar</button></td>
+      </tr>
+    </tbody>
+
